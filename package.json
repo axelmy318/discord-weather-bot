@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/axelmy318/discord-weather-bot/issues"
   },
-  "homepage": "https://github.com/axelmy318/discord-weather-bot#readme"
+  "homepage": "https://github.com/axelmy318/discord-weather-bot#readme",
+  "dependencies": {
+    "discord": "^0.8.2",
+    "discord.js": "^12.5.3"
+  }
 }
