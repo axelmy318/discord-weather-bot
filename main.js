@@ -1,6 +1,6 @@
 //Importing modules and json files
 const Discord = require('discord.js')
-const DiscordAPIData = require('./discordAPI.json')
+const DiscordAPI = require('./discordAPI.json')
 const BotSettings = require('./BotSettings.json')
 const fs = require('fs')
 
@@ -15,7 +15,6 @@ const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith(
 //Loading all the commands into the client
 for(const file of commandFiles){
     const command = require(`./commands/${file}`)
-
     client.commands.set(command.name, command)
 }
 
@@ -23,7 +22,7 @@ client.once('ready', () => {
     console.log('Client ready')
 })
 
-client.on('message', message => {
+client.on('message', async(message) => {
     //Returning if the message is not a command, or if the bot sent it
     if(!message.content.startsWith(BotSettings.prefix) || message.author.bot) return
 
@@ -31,8 +30,8 @@ client.on('message', message => {
     const command = args.shift().toLowerCase()
     
     if(BotSettings.commandsWhitelist.includes(command)){
-        client.commands.get(command).execute(message, args)
+        await client.commands.get(command).execute(message, args)
     }
 })
 
-client.login(DiscordAPIData.accessToken)
+client.login(DiscordAPI.accessToken)
