@@ -5,7 +5,7 @@ const Discord = require('discord.js')
 module.exports = {
     name: 'weather',
     description: 'Shows infos about the weather of the specified city',
-    async execute(message, args){
+    execute(message, args){
         try{
             if(args[0] === undefined){
                 message.channel.send(`<@${message.author.id}>, you need to specify a location. IE: **-${this.name} geneva**`)
@@ -14,10 +14,8 @@ module.exports = {
                 const w = new Weather()
                 let city = args[0]
     
-                let data = await w.getCurrentWeatherInCity(city)
-                console.log('Fetched', data)
-                
-                if(data){
+                w.getCurrentWeatherInCity(city).then(response => {
+                    const data = response.data
                     let embed = new Discord.MessageEmbed()
                         .setColor('#0099ff')
                         .setTitle(`Weather in ${data.name}`)
@@ -32,10 +30,10 @@ module.exports = {
                         .setFooter(`Datas are fetched from ${WeatherSettings.defaultUrl}`);
                         
                         message.channel.send(embed)
-                }
-                else {
-                    message.channel.send(`<@${message.author.id}>, I was unable to find le location you specified`)
-                }
+                    
+                }).catch(error => {
+                    message.channel.send(`<@${message.author.id}>, I was unable to find the location you specified`)
+                })
             }
         }
         catch {
