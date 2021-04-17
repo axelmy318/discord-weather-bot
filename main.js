@@ -20,6 +20,13 @@ for(const file of commandFiles){
 
 client.once('ready', () => {
     console.log('Client ready')
+    client.user.setPresence({
+        status: 'online',
+        activity: {
+         type: 'PLAYING',
+         name: 'type "-weather location" to get info on weather',
+        }
+    });
 })
 
 client.on('message', async(message) => {
