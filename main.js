@@ -29,7 +29,7 @@ client.once('ready', () => {
     });
 })
 
-client.on('message', async(message) => {
+client.on('message', (message) => {
     //Returning if the message is not a command, or if the bot sent it
     if(!message.content.startsWith(BotSettings.prefix) || message.author.bot) return
 
@@ -37,7 +37,7 @@ client.on('message', async(message) => {
     const command = args.shift().toLowerCase()
     
     if(BotSettings.commandsWhitelist.includes(command))
-        await client.commands.get(command).execute(message, args)
+        client.commands.get(command).execute(message, args)
 })
 
 client.login(DiscordAPI.accessToken)

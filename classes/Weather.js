@@ -4,16 +4,6 @@ const axios = require('axios')
 
 module.exports = class Weather {
     getCurrentWeatherInCity = async(city) => {
-        return axios
-            .get(`${WeahterSettings.dataUrl}weather?q=${city}&APPID=${WeatherAPI.appId}&units=${WeahterSettings.units}`)
-            .then(
-                (response) => {
-                    return response.data
-                },
-                (error) => {
-                    console.error(error)
-                    return false
-                }
-            )
+        return axios.get(`${WeahterSettings.dataUrl}weather?q=${city}&APPID=${WeatherAPI.appId}&units=${WeahterSettings.units}`)
     }
 }
