@@ -1,7 +1,7 @@
 # discord-weather-bot
 A bot that displays informations about the weather for a specific city
 
-This bot was built for educational pruposes and may not be updated in the future. However you can still invite it into your servers using this link : https://discord.com/oauth2/authorize?client_id=832684912356098058&scope=bot&permissions=52288
+This bot was built for educational purposes and may not be updated in the future. However you can still invite it into your servers using this link : https://discord.com/oauth2/authorize?client_id=832684912356098058&scope=bot&permissions=52288
 ## How to install and run the bot
 
 You can run this bot on a NodeJS server following these steps : 
