@@ -12,10 +12,11 @@ module.exports = {
             }
             else{
                 const w = new Weather()
-                let city = args[0]
-    
+                let city = args.join(' ')
+
                 w.getCurrentWeatherInCity(city).then(response => {
                     const data = response.data
+                    console.log(data)
                     let embed = new Discord.MessageEmbed()
                         .setColor('#0099ff')
                         .setTitle(`Weather in ${data.name}`)
@@ -24,13 +25,12 @@ module.exports = {
                         .setThumbnail(`${WeatherSettings.imgUrl}${data.weather[0].icon}@2x.png`)
                         .setColor('#fff499')
                         .addFields(
-                            { name: `${data.main.temp} degrees`, value: `feels like ${data.main.feels_like}` },
-                            { name: 'Wind', value: `${data.wind.speed} km/h`, inline: true }
+                            { name: `${Math.round(data.main.temp)} degrees`, value: `feels like ${Math.round(data.main.feels_like)}` },
+                            { name: 'Wind', value: `${Math.round(data.wind.speed)} km/h`, inline: true }
                         )
                         .setFooter(`Datas are fetched from ${WeatherSettings.defaultUrl}`);
                         
                         message.channel.send(embed)
-                    
                 }).catch(error => {
                     message.channel.send(`<@${message.author.id}>, I was unable to find the location you specified`)
                 })
