@@ -11,8 +11,8 @@ module.exports = class Weather {
                     return response.data
                 },
                 (error) => {
-                    console.log(error)
-                    return error
+                    console.error(error)
+                    return false
                 }
             )
     }
