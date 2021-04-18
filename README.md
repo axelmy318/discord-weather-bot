@@ -5,6 +5,8 @@ This bot was built for educational purposes and may not be updated in the future
 
 The server fetches data from the OpenWeatherMap API
 
+![image](https://user-images.githubusercontent.com/82584433/115156822-80173b00-a086-11eb-91de-24bf8e9dadf6.png)
+
 ## How to install and run the bot on your own server
 
 You can run this bot on a NodeJS server following these steps : 
