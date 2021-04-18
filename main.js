@@ -23,14 +23,14 @@ client.once('ready', () => {
     client.user.setPresence({
         status: 'online',
         activity: {
-         type: 'PLAYING',
-         name: 'type "-weather location" to get info on weather',
+         type: 'WATCHING',
+         name: 'https://github.com/axelmy318',
         }
     });
 })
 
 client.on('message', (message) => {
-    //Returning if the message is not a command, or if the bot sent it
+    //Returning if the message is not a command, or if a bot sent it
     if(!message.content.startsWith(BotSettings.prefix) || message.author.bot) return
 
     const args = message.content.slice(BotSettings.prefix.length).split(/ +/)
